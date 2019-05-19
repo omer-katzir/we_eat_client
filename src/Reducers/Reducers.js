@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-import * as actions from '../Actions/Actions';
 import {REQUEST_RESTAURANTS} from "../Actions/Actions";
 import {RECEIVE_RESTAURANTS} from "../Actions/Actions";
 import {RECEIVED_RESTAURANTS_FAILD} from "../Actions/Actions";

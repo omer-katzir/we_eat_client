@@ -9,10 +9,6 @@ import Restaurant from "../Components/Restaurant";
 
 class RestaurantsList extends Component{
 
-    constructor(props){
-        super(props);
-
-    }
     componentDidMount() {
        this.props.getRestaurants();
     }
@@ -57,7 +53,7 @@ RestaurantsList.propTypes = {
     isFetching: PropTypes.bool.isRequired,
     lastUpdated: PropTypes.number,
     error: PropTypes.object,
-    dispatch: PropTypes.func.isRequired,
+    getRestaurants: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {

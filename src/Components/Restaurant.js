@@ -8,15 +8,17 @@ import Divider from "@material-ui/core/Divider/index";
 import Rating from 'material-ui-rating';
 import Tooltip from '@material-ui/core/Tooltip/index';
 
-const Cuisine = ['american', 'asian', 'bakery', 'fast_food', 'steak', 'sushi', 'vegetarian'];
 const CuisineIconCode = {'american': 65, 'asian': 46, 'bakery': 80,
                         'fast_food': 87, 'steak': 51, 'sushi': 73, 'vegetarian': 36};
 
-const style =
+const cardStyle =
     {
         card: {
             minWidth: 500,
-        },
+        }
+    };
+const tooltipStyle =
+    {
         tooltip: {
             color: 0xFF0000,
             //padding: '4px 8px',
@@ -26,8 +28,8 @@ const style =
     };
 
 
-const TooltipLarge = withStyles(style)(Tooltip);
-const CardCustom = withStyles(style)(Card);
+const TooltipLarge = withStyles(tooltipStyle)(Tooltip);
+const CardCustom = withStyles(cardStyle)(Card);
 
 const Restaurant = ({restaurant}) => (
     <TooltipLarge placement='right-start'
@@ -43,15 +45,13 @@ const Restaurant = ({restaurant}) => (
     <CardCustom  className={restaurant.name + 'Card'} raised={true}>
         <CardContent>
             <Typography gutterBottom variant='h5' component='h2' style={{'color':'#86cfff'}}>
-                                <span style={{'font-family':'CuisinesFont', 'font-size':'150%', 'color':'#c06931'}}>
+                                <span style={{'fontFamily':'CuisinesFont', 'fontSize':'150%', 'color':'#c06931'}}>
                                     {String.fromCharCode(CuisineIconCode[restaurant.cuisine.toString().toLowerCase()])} </span>{restaurant.name}
             </Typography>
             <Divider />
-            <Typography component='p'>
-                <div>
+            <div>
                     <span>{ restaurant.cuisine }</span><Rating value={restaurant.rating} max={3.0}  />
-                </div>
-            </Typography>
+            </div>
         </CardContent>
     </CardCustom>
     </TooltipLarge>

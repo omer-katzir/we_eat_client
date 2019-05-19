@@ -21,6 +21,9 @@
 #deprecated
 deprecated/*
 
+# ignore local settings
+.idea/*
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

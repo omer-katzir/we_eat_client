@@ -17,11 +17,7 @@ function App() {
              className="header-image"
              alt='we_eat_main_image' width='1024' height='215'/>
       </header>
-      <body>
-       <div>
          <RestaurantsList  />
-       </div>
-      </body>
     </div>
       </Provider>
   );
