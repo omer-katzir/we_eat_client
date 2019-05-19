@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Provider} from 'react-redux';
+import RestaurantsList from './Containers/RestaurantsList.js';
+import thunkMiddleware from 'redux-thunk';
+import {createStore, applyMiddleware} from 'redux';
+import rootReducer from './Reducers/Reducers.js'
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware)) ;
 
 function App() {
   return (
+      <Provider store={store}>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={ require('./restaurant_image.jpg') }
+             className="header-image"
+             alt='we_eat_main_image' width='1024' height='215'/>
       </header>
+      <body>
+       <div>
+         <RestaurantsList  />
+       </div>
+      </body>
     </div>
+      </Provider>
   );
 }
 
 export default App;
+//apiRoot='http://localhost:3000/restaurants'/>
