@@ -13,7 +13,8 @@ export const restaurantsReducer = handleActions(
                 ...state,
                 isFetching: false,
                 error: action.error? action.payload : undefined,
-                items: action.error? [] : action.payload
+                items: action.error? [] : action.payload,
+                lastUpdate: Date.now()
             }
         )
     },

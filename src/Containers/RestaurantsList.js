@@ -13,30 +13,19 @@ class RestaurantsList extends Component{
     }
 
     render(){
-        const { restaurants, isFetching, lastUpdated, error } = this.props;
+        const { restaurants, isFetching, lastUpdate, error } = this.props;
         return(
             <div className='Restaurants-list'>
                 <p>
-                    { lastUpdated && (
-                        <span>
-                            Last updated at {new Date(lastUpdated).toLocaleTimeString()}.{' '}
-                        </span>
-                    ) }
-                    { !isFetching && (
-                        <Button variant='contained'
-                                size='small'
-                                color='primary'
-                                onClick={() => this.props.getRestaurants()}>
-                            Refresh
-                        </Button>
-                    )}
-                    {
-                        error && (
-                            <span>
-                                {error.message}
-                            </span>
-                        )
-                    }
+                    {!isFetching &&
+                    (<Button variant='contained'
+                             size='small'
+                             color='primary'
+                             onClick={() => this.props.getRestaurants()}>
+                        Refresh
+                    </Button>)}
+                    {error && (<span>{error.message}</span>)}
+                    {lastUpdate && !error && (<span>Last updated at {new Date(lastUpdate).toLocaleTimeString()}.{' '}</span>)}
                 </p>
                 <GridView restaurants={restaurants}/>
             </div>
