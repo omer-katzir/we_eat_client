@@ -1,7 +1,4 @@
-import {REQUEST_RESTAURANTS} from "../Actions/Actions";
-import {RECEIVE_RESTAURANTS} from "../Actions/Actions";
-import {RECEIVED_RESTAURANTS_FAILD} from "../Actions/Actions";
-
+import * as ACTIONS from "../Actions/Actions"
 function restaurants(
     state = {
         isFetching: false,
@@ -10,21 +7,21 @@ function restaurants(
     },
     action) {
     switch(action.type){
-        case REQUEST_RESTAURANTS:
-            return Object.assign({}, state = {
+        case ACTIONS.REQUEST_RESTAURANTS:
+            return {
                 isFetching: true,
-            });
-        case RECEIVED_RESTAURANTS_FAILD:
-            return Object.assign({}, state = {
-                isFetching: false,
-                error: action.error,
-            });
-        case RECEIVE_RESTAURANTS:
-            return Object.assign({}, state = {
+            };
+        case ACTIONS.RECEIVED_RESTAURANTS_FAILED:
+            return{
+                    isFetching: false,
+                    error: action.error,
+                 };
+        case ACTIONS.RECEIVE_RESTAURANTS:
+            return {
                 isFetching: false,
                 items: action.items,
                 lastUpdate: action.receivedAt
-            });
+            };
         default:
             return state;
     }
