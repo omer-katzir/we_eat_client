@@ -47,7 +47,7 @@ function Restaurant(props){
                          name: {restaurant.name} <br/>
                          cuisine: {restaurant.cuisine}<br/>
                          rating: {restaurant.rating.toFixed(1)}<br/>
-                         {restaurant.address ? ('address: ' + restaurant.address) : ''}
+                         {restaurant.address ? ('address: ' + restaurant.address) : ''}<br/>
                          {restaurant.accept10bis ? 'accepts 10bis' : ''}
                      </div>
                  }>

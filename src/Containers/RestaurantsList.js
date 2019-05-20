@@ -43,7 +43,7 @@ RestaurantsList.propTypes = {
     getRestaurants: PropTypes.func.isRequired,
 };
 
-function mapStateToProps(state) {
+const mapStateToProps= state => {
     const {items: restaurants, isFetching, lastUpdate, error} = state;
 
     return {
