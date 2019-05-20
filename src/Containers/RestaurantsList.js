@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import '../Styles.css'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {fetchRestaurants, REQUEST_RESTAURANTS} from '../Actions/Actions';
+import {fetchRestaurants} from '../Actions/Actions';
 import Button from '@material-ui/core/Button';
 import GridView from '../Components/GridView.js';
 
@@ -48,17 +48,14 @@ class RestaurantsList extends Component{
 
 RestaurantsList.propTypes = {
     restaurants: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool,
     lastUpdated: PropTypes.number,
     error: PropTypes.object,
     getRestaurants: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
-    const restaurants = state.items || [];
-    const isFetching = state.isFetching ||  false;
-    const lastUpdate = state.lastUpdate;
-    const error = state.error;
+    const {items: restaurants, isFetching, lastUpdate, error} = state;
 
     return {
         restaurants,

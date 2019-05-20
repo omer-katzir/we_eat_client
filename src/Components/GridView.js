@@ -15,7 +15,7 @@ const styles = theme => ({
         backgroundColor: '#DDDDDD',
     },
     gridList: {
-        width: 400,
+        width: 1024,
         height: 600,
     },
 });
@@ -27,7 +27,7 @@ function GridView(props) {
         <div>
             <GridList cellHeight={180} className={classes.gridList}>
                 {restaurants.map(restaurant => (
-                    <GridListTile key={restaurant.id} cols={2}>
+                    <GridListTile key={restaurant.id} cols={0.5 + restaurant.rating * 0.2 } rows={0.7 + restaurant.rating * 0.2}>
                         <Restaurant restaurant={restaurant}/>
                     </GridListTile>
                 ))}

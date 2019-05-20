@@ -36,6 +36,7 @@ const Restaurant = ({restaurant}) => (
         <div>
             id: {restaurant.id} <br/>
             name: {restaurant.name} <br/>
+            cuisine: {restaurant.cuisine}<br/>
             rating: {restaurant.rating.toFixed(1)}<br/>
             {restaurant.address ? ('address: ' + restaurant.address) : ''}
             {restaurant.accept10bis ? 'accepts 10bis' : ''}
@@ -48,9 +49,10 @@ const Restaurant = ({restaurant}) => (
                                     {String.fromCharCode(CuisineIconCode[restaurant.cuisine.toString().toLowerCase()])} </span>{restaurant.name}
             </Typography>
             <Divider />
-            <div>
-                    <span>{ restaurant.cuisine }</span><Rating value={restaurant.rating} max={3.0}  />
-            </div>
+            <Typography>
+                    { restaurant.cuisine }
+                    <Rating value={restaurant.rating} max={3.0}  />
+            </Typography>
         </CardContent>
     </CardCustom>
     </TooltipLarge>

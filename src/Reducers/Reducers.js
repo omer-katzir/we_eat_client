@@ -1,30 +1,26 @@
-import * as ACTIONS from "../Actions/Actions"
-function restaurants(
-    state = {
+import { handleActions } from 'redux-actions';
+import { requestRestaurants, receiveRestaurants } from "../Actions/Actions";
+
+export const restaurantsReducer = handleActions(
+    {
+        [requestRestaurants]: (state) => (
+        {
+            ...state,
+            isFetching: true,
+        }),
+        [receiveRestaurants]: (state, action) => (
+            {
+                ...state,
+                isFetching: false,
+                error: action.error? action.payload : undefined,
+                items: action.error? [] : action.payload
+            }
+        )
+    },
+    {
         isFetching: false,
         items: [],
-        error: null,
-    },
-    action) {
-    switch(action.type){
-        case ACTIONS.REQUEST_RESTAURANTS:
-            return {
-                isFetching: true,
-            };
-        case ACTIONS.RECEIVED_RESTAURANTS_FAILED:
-            return{
-                    isFetching: false,
-                    error: action.error,
-                 };
-        case ACTIONS.RECEIVE_RESTAURANTS:
-            return {
-                isFetching: false,
-                items: action.items,
-                lastUpdate: action.lastUpdate
-            };
-        default:
-            return state;
+        error: undefined,
+        lastUpdate: undefined
     }
-}
-
-export default restaurants;
+);

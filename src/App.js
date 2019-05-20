@@ -2,11 +2,17 @@ import React from 'react';
 import './App.css';
 import { Provider} from 'react-redux';
 import {createStore} from 'redux';
-import restaurants from './Reducers/Reducers.js';
+import { restaurantsReducer } from './Reducers/Reducers.js';
 import bkgImage  from './restaurant_image.jpg';
 import RestaurantsList from './Containers/RestaurantsList.js'
 
-const store = createStore(restaurants);
+
+const store = createStore(restaurantsReducer, {
+  isFetching: false,
+  items: [],
+  error: undefined,
+  lastUpdate: undefined
+});
 
 function App() {
   return (

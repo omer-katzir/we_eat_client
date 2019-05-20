@@ -1,27 +1,23 @@
+import { createActions } from 'redux-actions'
+
+
 
 export const REQUEST_RESTAURANTS = 'REQUEST_RESTAURANTS';
 export const RECEIVE_RESTAURANTS = 'RECEIVE_RESTAURANTS';
-export const RECEIVED_RESTAURANTS_FAILED = 'RECEIVED_RESTAURANTS_FAILED';
 
-function receivedRestaurantsFailed(e){
-    return {
-        type: RECEIVED_RESTAURANTS_FAILED,
-        error: e,
-    };
-}
-function receiveRestaurants(json) {
-    return {
-        type: RECEIVE_RESTAURANTS,
-        items: json,
-        lastUpdate: Date.now(),
-    };
-}
+
+export const {requestRestaurants,
+                receiveRestaurants} = createActions(
+        REQUEST_RESTAURANTS,
+        RECEIVE_RESTAURANTS
+);
+
+
 
 export function fetchRestaurants(dispatch) {
-    dispatch({type: REQUEST_RESTAURANTS});
+    dispatch(requestRestaurants());
     fetch('http://localhost:3000/restaurants/')
         .then(response => response.json())
         .then(json => dispatch(receiveRestaurants(json)))
-        .catch(error => dispatch(receivedRestaurantsFailed(error)));
+        .catch(error => dispatch(receiveRestaurants(error)));
 }
-
