@@ -1,11 +1,10 @@
 import React,{ Component } from 'react';
+import '../Styles.css'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {fetchRestaurants} from '../Actions/Actions';
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Restaurant from "../Components/Restaurant";
-
+import Button from '@material-ui/core/Button';
+import GridView from '../Components/GridView.js';
 
 class RestaurantsList extends Component{
 
@@ -16,7 +15,7 @@ class RestaurantsList extends Component{
     render(){
         const { restaurants, isFetching, lastUpdated, error } = this.props;
         return(
-            <div>
+            <div className='Restaurants-list'>
                 <p>
                     { lastUpdated && (
                         <span>
@@ -24,7 +23,12 @@ class RestaurantsList extends Component{
                         </span>
                     ) }
                     { !isFetching && (
-                        <button onClick={() => this.props.getRestaurants()}>Refresh</button>
+                        <Button variant='contained'
+                                size='small'
+                                color='primary'
+                                onClick={() => this.props.getRestaurants()}>
+                            Refresh
+                        </Button>
                     )}
                     {
                         error && (
@@ -34,13 +38,7 @@ class RestaurantsList extends Component{
                         )
                     }
                 </p>
-                <List>
-                    {restaurants.map(restaurant =>
-                        <ListItem key={restaurant.id} alignItems='flex-start'>
-                            <Restaurant restaurant={restaurant}/>
-                        </ListItem>
-                    )}
-                </List>
+                <GridView restaurants={restaurants}/>
             </div>
 
         )

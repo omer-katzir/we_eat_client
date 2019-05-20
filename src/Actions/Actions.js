@@ -1,12 +1,11 @@
 
 export const REQUEST_RESTAURANTS = 'REQUEST_RESTAURANTS';
 export const RECEIVE_RESTAURANTS = 'RECEIVE_RESTAURANTS';
-
 export const RECEIVED_RESTAURANTS_FAILED = 'RECEIVED_RESTAURANTS_FAILED';
 
 function receivedRestaurantsFailed(e){
     return {
-        type: RECEIVED_RESTAURANTS_FAILD,
+        type: RECEIVED_RESTAURANTS_FAILED,
         error: e,
     };
 }
