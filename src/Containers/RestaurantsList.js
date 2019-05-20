@@ -57,13 +57,13 @@ RestaurantsList.propTypes = {
 function mapStateToProps(state) {
     const restaurants = state.items || [];
     const isFetching = state.isFetching ||  false;
-    const lastUpdated = state.receivedAt;
+    const lastUpdate = state.lastUpdate;
     const error = state.error;
 
     return {
         restaurants,
         isFetching,
-        lastUpdated,
+        lastUpdate,
         error,
     }
 }

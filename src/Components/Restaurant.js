@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from "@material-ui/core/styles/index"
-import Card from "@material-ui/core/Card/index";
-import CardContent from "@material-ui/core/CardContent/index";
-import Typography from "@material-ui/core/Typography/index";
-import Divider from "@material-ui/core/Divider/index";
+import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card/index';
+import CardContent from '@material-ui/core/CardContent/index';
+import Typography from '@material-ui/core/Typography/index';
+import Divider from '@material-ui/core/Divider/index';
 import Rating from 'material-ui-rating';
 import Tooltip from '@material-ui/core/Tooltip/index';
 
@@ -21,7 +21,6 @@ const tooltipStyle =
     {
         tooltip: {
             color: 0xFF0000,
-            //padding: '4px 8px',
             fontSize: 15,
 
         },

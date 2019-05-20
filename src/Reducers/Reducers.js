@@ -20,7 +20,7 @@ function restaurants(
             return {
                 isFetching: false,
                 items: action.items,
-                lastUpdate: action.receivedAt
+                lastUpdate: action.lastUpdate
             };
         default:
             return state;

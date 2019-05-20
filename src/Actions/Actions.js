@@ -13,7 +13,7 @@ function receiveRestaurants(json) {
     return {
         type: RECEIVE_RESTAURANTS,
         items: json,
-        receivedAt: Date.now(),
+        lastUpdate: Date.now(),
     };
 }
 
