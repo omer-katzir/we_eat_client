@@ -17,15 +17,11 @@ function receiveRestaurants(json) {
     };
 }
 
-export function fetchRestaurants() {
-    return (dispatch, getState) => {
-        if (getState().isFetching)
-            return;
-        dispatch({type: REQUEST_RESTAURANTS});
-        fetch('http://localhost:3000/restaurants/')
-            .then(response => response.json())
-            .then(json => dispatch(receiveRestaurants(json)))
-            .catch(error => dispatch(receivedRestaurantsFailed(error)))
-    };
+export function fetchRestaurants(dispatch) {
+    dispatch({type: REQUEST_RESTAURANTS});
+    fetch('http://localhost:3000/restaurants/')
+        .then(response => response.json())
+        .then(json => dispatch(receiveRestaurants(json)))
+        .catch(error => dispatch(receivedRestaurantsFailed(error)));
 }
 

@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import '../Styles.css'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {fetchRestaurants} from '../Actions/Actions';
+import {fetchRestaurants, REQUEST_RESTAURANTS} from '../Actions/Actions';
 import Button from '@material-ui/core/Button';
 import GridView from '../Components/GridView.js';
 
@@ -70,7 +70,11 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getRestaurants: () => dispatch(fetchRestaurants()),
+        getRestaurants: () => {
+            if(ownProps.isFetching)
+                return;
+           fetchRestaurants(dispatch);
+        },
     }
 };
 

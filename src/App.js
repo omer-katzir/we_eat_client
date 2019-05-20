@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
 import { Provider} from 'react-redux';
-import thunkMiddleware from 'redux-thunk';
-import {createStore, applyMiddleware, combineReducers} from 'redux';
+import {createStore} from 'redux';
 import restaurants from './Reducers/Reducers.js';
 import bkgImage  from './restaurant_image.jpg';
 import RestaurantsList from './Containers/RestaurantsList.js'
 
-const store = createStore(restaurants,
-    applyMiddleware(thunkMiddleware)) ;
+const store = createStore(restaurants);
 
 function App() {
   return (
