@@ -5,8 +5,6 @@ import {createStore} from 'redux';
 import { restaurantsReducer } from './reducers/Reducers.js';
 import bkgImage  from './restaurant_image.jpg';
 import RestaurantsList from './containers/RestaurantsList.js'
-import { devToolsEnhancer } from 'redux-devtools-extension';
-
 
 const store = createStore(restaurantsReducer, {
   isFetching: false,

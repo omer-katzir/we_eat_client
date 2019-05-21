@@ -41,7 +41,7 @@ const styles = theme => ({
 function Restaurant(props){
     const {classes, restaurant} = props;
     return (
-        <Card classes={{card:classes.card}} raised={true}>
+        <Card className={classes.card} raised={true}>
             <CardContent>
                 <Typography className={classes.typography}  gutterBottom variant={'h5'}><span className={classes.icon}>
                     {String.fromCharCode(CUISINE_ICON_CODE[restaurant.cuisine.toString().toLowerCase()])} </span>{
