@@ -7,8 +7,9 @@ import Typography from '@material-ui/core/Typography/index';
 import Divider from '@material-ui/core/Divider/index';
 import Rating from 'material-ui-rating';
 import Tooltip from '@material-ui/core/Tooltip/index';
+import PinDrop from '@material-ui/icons/PinDrop.js'
 
-const CuisineIconCode = {'american': 65, 'asian': 46, 'bakery': 80,
+const CUISINE_ICON_CODE = {'american': 65, 'asian': 46, 'bakery': 80,
                         'fast_food': 87, 'steak': 51, 'sushi': 73, 'vegetarian': 36};
 
 const styles = theme => ({
@@ -40,32 +41,29 @@ const styles = theme => ({
 function Restaurant(props){
     const {classes, restaurant} = props;
     return (
-        <Tooltip classes={{ tooltip: classes.tooltip }}
-                 title={
-                     <div>
-                         id: {restaurant.id} <br/>
-                         name: {restaurant.name} <br/>
-                         cuisine: {restaurant.cuisine}<br/>
-                         rating: {restaurant.rating.toFixed(1)}<br/>
-                         {restaurant.address ? ('address: ' + restaurant.address) : ''}<br/>
-                         {restaurant.accept10bis ? 'accepts 10bis' : ''}
-                     </div>
-                 }>
-            <Card classes={{card:classes.card}} raised={true}>
-                <CardContent>
-                    <Typography className={classes.typography}  gutterBottom variant={'h5'}
-                    >
-                                <span className={classes.icon}>
-                                    {String.fromCharCode(CuisineIconCode[restaurant.cuisine.toString().toLowerCase()])} </span>{restaurant.name}
-                    </Typography>
-                    <Divider/>
-                    <Typography>
-                        {restaurant.cuisine}
-                    </Typography>
+        <Card classes={{card:classes.card}} raised={true}>
+            <CardContent>
+                <Typography className={classes.typography}  gutterBottom variant={'h5'}><span className={classes.icon}>
+                    {String.fromCharCode(CUISINE_ICON_CODE[restaurant.cuisine.toString().toLowerCase()])} </span>{
+                    restaurant.name}
+                    {restaurant.address &&(
+                    <Tooltip classes={{tooltip: classes.tooltip}} title={restaurant.address}>
+                            <PinDrop color='disabled' />
+                    </Tooltip>
+                    )}
+                </Typography>
+                <Divider/>
+                <Typography>
+                    {restaurant.cuisine}
+                </Typography>
+                <div>
                     <Rating value={restaurant.rating} max={3.0}/>
-                </CardContent>
-            </Card>
-        </Tooltip>
+                    <Typography style={{fontSize: 10, textAlign: 'right'}}>
+                            ({restaurant.rating.toFixed(1)})
+                    </Typography>
+                </div>
+            </CardContent>
+        </Card>
     );
 }
 

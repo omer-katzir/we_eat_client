@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import style from './App.css';
 import { Provider} from 'react-redux';
 import {createStore} from 'redux';
 import { restaurantsReducer } from './reducers/Reducers.js';
@@ -20,7 +20,7 @@ const store = createStore(restaurantsReducer, {
 function App() {
   return (
       <Provider store={store}>
-    <div className="App">
+    <div className={style.App}>
       <header className="App-header">
         <img src={ bkgImage }
              className="header-image"
@@ -34,4 +34,3 @@ function App() {
 
 
 export default App;
-//apiRoot='http://localhost:3000/restaurants'/>
