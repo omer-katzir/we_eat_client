@@ -54,14 +54,8 @@ const mapStateToProps= state => {
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        getRestaurants: () => {
-            if(ownProps.isFetching)
-                return;
-           fetchRestaurants(dispatch);
-        },
-    }
+const mapDispatchToProps = {
+    getRestaurants: fetchRestaurants,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsList);

@@ -14,10 +14,12 @@ export const {requestRestaurants,
 
 
 
-export function fetchRestaurants(dispatch) {
-    dispatch(requestRestaurants());
-    fetch('http://localhost:3000/restaurants/')
-        .then(response => response.json())
-        .then(json => dispatch(receiveRestaurants(json)))
-        .catch(error => dispatch(receiveRestaurants(error)));
+export function fetchRestaurants() {
+    return function(dispatch) {
+        dispatch(requestRestaurants());
+        fetch('http://localhost:3000/restaurants/')
+            .then(response => response.json())
+            .then(json => dispatch(receiveRestaurants(json)))
+            .catch(error => dispatch(receiveRestaurants(error)));
+    }
 }
