@@ -2,9 +2,9 @@ import React,{ Component } from 'react';
 import '../Styles.css'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {fetchRestaurants} from '../Actions/Actions';
+import {fetchRestaurants} from '../actions/Actions';
 import Button from '@material-ui/core/Button';
-import GridView from '../Components/GridView.js';
+import GridView from '../components/GridView.js';
 
 class RestaurantsList extends Component{
 
@@ -25,7 +25,7 @@ class RestaurantsList extends Component{
                         Refresh
                     </Button>)}
                     {error && (<span>{error.message}</span>)}
-                    {lastUpdate && !error && (<span>Last updated at {new Date(lastUpdate).toLocaleTimeString()}.{' '}</span>)}
+                    {lastUpdate && !error && (<span>Last updated at {new Date(lastUpdate).toLocaleTimeString()}</span>)}
                 </p>
                 <GridView restaurants={restaurants}/>
             </div>

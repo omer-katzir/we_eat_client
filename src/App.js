@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import { Provider} from 'react-redux';
 import {createStore} from 'redux';
-import { restaurantsReducer } from './Reducers/Reducers.js';
+import { restaurantsReducer } from './reducers/Reducers.js';
 import bkgImage  from './restaurant_image.jpg';
-import RestaurantsList from './Containers/RestaurantsList.js'
+import RestaurantsList from './containers/RestaurantsList.js'
 
 
 const store = createStore(restaurantsReducer, {

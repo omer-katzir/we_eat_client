@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { requestRestaurants, receiveRestaurants } from "../Actions/Actions";
+import { requestRestaurants, receiveRestaurants } from "../actions/Actions";
 
 export const restaurantsReducer = handleActions(
     {
