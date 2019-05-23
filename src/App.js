@@ -3,7 +3,7 @@ import style from './App.css';
 import { Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import restaurantsReducer  from './reducers/Reducers.js';
-import bkgImage  from './restaurant_image.jpg';
+import backgroundImage  from './restaurant_image.jpg';
 import thunk from 'redux-thunk';
 import RestaurantsContainer from './containers/RestaurantsContainer';
 
@@ -22,7 +22,7 @@ function App() {
       <Provider store={store}>
     <div className={style.App} >
       <header className="App-header">
-        <img src={ bkgImage }
+        <img src={ backgroundImage }
              className="header-image"
              alt='we_eat_main_image'/>
       </header>

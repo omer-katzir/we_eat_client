@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import '../Styles.css'
+import '../styles.css'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {fetchRestaurants} from '../actions/Actions';
@@ -15,7 +15,7 @@ class RestaurantsContainer extends Component{
     render(){
         const { isFetching, lastUpdate, error } = this.props;
         return(
-            <div className='Restaurants-list'>
+            <div className='restaurants-list'>
                 <p>
                     {!isFetching &&
                     (<Button variant='contained'
