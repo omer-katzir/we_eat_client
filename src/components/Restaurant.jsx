@@ -72,7 +72,7 @@ Restaurant.propTypes = {
     restaurant: PropTypes.shape({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        cuisine: PropTypes.string.isRequired, //oneOf(Cuisine).isRequired,
+        cuisine: PropTypes.string.isRequired,
         rating: PropTypes.number,
         accept10bis: PropTypes.bool,
         max_delivery_time: PropTypes.number,

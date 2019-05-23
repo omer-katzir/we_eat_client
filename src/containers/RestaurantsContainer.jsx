@@ -16,7 +16,6 @@ class RestaurantsContainer extends Component{
         const { isFetching, lastUpdate, error } = this.props;
         return(
             <div className='restaurants-list'>
-                <p>
                     {!isFetching &&
                     (<Button variant='contained'
                              size='small'
@@ -26,7 +25,6 @@ class RestaurantsContainer extends Component{
                     </Button>)}
                     {error && (<span>{error.message}</span>)}
                     {lastUpdate && !error && (<span>Last updated at {new Date(lastUpdate).toLocaleTimeString()}</span>)}
-                </p>
                 <RestaurantsList />
             </div>
 
