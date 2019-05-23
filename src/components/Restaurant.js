@@ -23,7 +23,7 @@ const styles = theme => ({
         fontSize: 11,
     },
     card: {
-        minWidth: 500,
+        minWidth: 100,
     },
     typography: {
         component: 'h2',
@@ -58,7 +58,7 @@ function Restaurant(props){
                 </Typography>
                 <div>
                     <Rating value={restaurant.rating} max={3.0}/>
-                    <Typography style={{fontSize: 10, textAlign: 'right'}}>
+                    <Typography style={{fontSize: 10, textAlign: 'center'}}>
                             ({restaurant.rating.toFixed(1)})
                     </Typography>
                 </div>

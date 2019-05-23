@@ -1,13 +1,14 @@
 import { handleActions } from 'redux-actions';
 import { requestRestaurants, receiveRestaurants } from "../actions/Actions";
 
-export const restaurantsReducer = handleActions(
+const restaurantsReducer = handleActions(
     {
         [requestRestaurants]: (state) => (
-        {
-            ...state,
-            isFetching: true,
-        }),
+            {
+                ...state,
+                isFetching: true,
+            }
+        ),
         [receiveRestaurants]: (state, action) => (
             {
                 ...state,
@@ -25,3 +26,5 @@ export const restaurantsReducer = handleActions(
         lastUpdate: undefined
     }
 );
+
+export default restaurantsReducer;

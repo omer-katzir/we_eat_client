@@ -15,7 +15,9 @@ export const {requestRestaurants,
 
 
 export function fetchRestaurants() {
-    return function(dispatch) {
+    return function(dispatch, getState) {
+        if(getState().isFetching)
+            return;
         dispatch(requestRestaurants());
         fetch('http://localhost:3000/restaurants/')
             .then(response => response.json())

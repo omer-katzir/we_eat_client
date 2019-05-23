@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {fetchRestaurants} from '../actions/Actions';
 import Button from '@material-ui/core/Button';
-import GridView from '../components/GridView.js';
+import RestaurantsList from '../components/RestaurantsList.jsx';
 
-class RestaurantsList extends Component{
+class RestaurantsContainer extends Component{
 
     componentDidMount() {
        this.props.getRestaurants();
     }
 
     render(){
-        const { restaurants, isFetching, lastUpdate, error } = this.props;
+        const { isFetching, lastUpdate, error } = this.props;
         return(
             <div className='Restaurants-list'>
                 <p>
@@ -27,7 +27,7 @@ class RestaurantsList extends Component{
                     {error && (<span>{error.message}</span>)}
                     {lastUpdate && !error && (<span>Last updated at {new Date(lastUpdate).toLocaleTimeString()}</span>)}
                 </p>
-                <GridView restaurants={restaurants}/>
+                <RestaurantsList />
             </div>
 
         )
@@ -35,8 +35,7 @@ class RestaurantsList extends Component{
 
 }
 
-RestaurantsList.propTypes = {
-    restaurants: PropTypes.array.isRequired,
+RestaurantsContainer.propTypes = {
     isFetching: PropTypes.bool,
     lastUpdated: PropTypes.number,
     error: PropTypes.object,
@@ -44,18 +43,17 @@ RestaurantsList.propTypes = {
 };
 
 const mapStateToProps= state => {
-    const {items: restaurants, isFetching, lastUpdate, error} = state;
+    const { isFetching, lastUpdate, error} = state.restaurants;
 
     return {
-        restaurants,
         isFetching,
         lastUpdate,
         error,
     }
-}
+};
 
 const mapDispatchToProps = {
     getRestaurants: fetchRestaurants,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsList);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantsContainer);
