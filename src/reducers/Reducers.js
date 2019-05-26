@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
-import { requestRestaurants, receiveRestaurants } from "../actions/Actions";
+
+import { requestRestaurants, receiveRestaurants } from "actions/Actions";
 
 const restaurantsReducer = handleActions(
 {
@@ -14,14 +15,14 @@ const restaurantsReducer = handleActions(
             isFetching: false,
             error: action.error? action.payload : undefined,
             items: action.error? [] : action.payload,
-            lastUpdate: Date.now()
-        })
+            lastUpdate: Date.now(),
+        }),
     },
     {
         isFetching: false,
         items: [],
         error: undefined,
-        lastUpdate: undefined
+        lastUpdate: undefined,
     }
 );
 

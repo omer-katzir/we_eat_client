@@ -7,10 +7,10 @@ import Typography from '@material-ui/core/Typography/index';
 import Divider from '@material-ui/core/Divider/index';
 import Rating from 'material-ui-rating';
 import Tooltip from '@material-ui/core/Tooltip/index';
-import PinDrop from '@material-ui/icons/PinDrop.js'
+import PinDrop from '@material-ui/icons/PinDrop'
 
-const CUISINE_ICON_CODE = {'american': 65, 'asian': 46, 'bakery': 80,
-                        'fast_food': 87, 'steak': 51, 'sushi': 73, 'vegetarian': 36};
+const CUISINE_ICON_CODE = { 'american': 65, 'asian': 46, 'bakery': 80,
+                        'fast_food': 87, 'steak': 51, 'sushi': 73, 'vegetarian': 36 };
 
 const styles = theme => ({
 
@@ -32,22 +32,20 @@ const styles = theme => ({
     icon: {
         fontFamily: 'CuisinesFont',
         fontSize: '150%',
-        color: '#c06931'
-    }
+        color: '#c06931',
+    },
 });
 
-
-
 function Restaurant(props){
-    const {classes, restaurant} = props;
+    const { classes, restaurant } = props;
     return (
-        <Card className={classes.card} raised={true}>
+        <Card className={classes.card} raised>
             <CardContent>
-                <Typography className={classes.typography}  gutterBottom variant={'h5'}><span className={classes.icon}>
+                <Typography className={classes.typography}  gutterBottom variant='h5'><span className={classes.icon}>
                     {String.fromCharCode(CUISINE_ICON_CODE[restaurant.cuisine.toString().toLowerCase()])} </span>{
                     restaurant.name}
                     {restaurant.address &&(
-                    <Tooltip classes={{tooltip: classes.tooltip}} title={restaurant.address}>
+                    <Tooltip classes={{ tooltip: classes.tooltip }} title={restaurant.address}>
                             <PinDrop color='disabled' />
                     </Tooltip>
                     )}
@@ -58,7 +56,7 @@ function Restaurant(props){
                 </Typography>
                 <div>
                     <Rating value={restaurant.rating} max={3.0}/>
-                    <Typography style={{fontSize: 10, textAlign: 'center'}}>
+                    <Typography style={{ fontSize: 10, textAlign: 'center' }}>
                             ({restaurant.rating.toFixed(1)})
                     </Typography>
                 </div>
