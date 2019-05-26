@@ -1,47 +1,48 @@
-import React,{ Component } from 'react';
-import '../styles.css'
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import {fetchRestaurants} from '../actions/Actions';
 import Button from '@material-ui/core/Button';
-import RestaurantsList from '../components/RestaurantsList.jsx';
 
-class RestaurantsContainer extends Component{
+import RestaurantsList from 'components/RestaurantsList';
+import { fetchRestaurants } from 'actions/Actions';
+
+import style from './restaurantsContainer.module.scss';
+
+class RestaurantsContainer extends Component {
 
     componentDidMount() {
        this.props.getRestaurants();
     }
 
     render(){
-        const { isFetching, lastUpdate, error } = this.props;
+
+        const { isFetching, lastUpdate, error, getRestaurants } = this.props;
         return(
-            <div className='restaurants-list'>
+            <div className={style.restaurants}>
                     {!isFetching &&
                     (<Button variant='contained'
                              size='small'
                              color='primary'
-                             onClick={() => this.props.getRestaurants()}>
+                             onClick={() => getRestaurants()}>
                         Refresh
                     </Button>)}
                     {error && (<span>{error.message}</span>)}
                     {lastUpdate && !error && (<span>Last updated at {new Date(lastUpdate).toLocaleTimeString()}</span>)}
                 <RestaurantsList />
             </div>
-
         )
     }
-
 }
 
 RestaurantsContainer.propTypes = {
     isFetching: PropTypes.bool,
-    lastUpdated: PropTypes.number,
+    lastUpdate: PropTypes.number,
     error: PropTypes.object,
     getRestaurants: PropTypes.func.isRequired,
 };
 
 const mapStateToProps= state => {
-    const { isFetching, lastUpdate, error} = state.restaurants;
+    const { isFetching, lastUpdate, error } = state.restaurants;
 
     return {
         isFetching,
